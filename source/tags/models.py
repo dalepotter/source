@@ -66,3 +66,15 @@ class ConceptTag(TagBase):
 class ConceptTaggedItem(GenericTaggedItemBase):
     tag = models.ForeignKey(ConceptTag, related_name="%(app_label)s_%(class)s_concepttag_items")
     
+class DataTag(TagBase):
+    pass
+
+class DataTaggedItem(GenericTaggedItemBase):
+    tag = models.ForeignKey(DataTag, related_name="%(app_label)s_%(class)s_datatag_items")
+
+class SkillTag(TagBase):
+    pass
+
+class SkillTaggedItem(GenericTaggedItemBase):
+    tag = models.ForeignKey(SkillTag, related_name="%(app_label)s_%(class)s_skilltag_items")
+    
