@@ -65,8 +65,8 @@ class Code(CachingMixin, models.Model):
     def save(self, *args, **kwargs):
         # GitHub API does not like trailing slashes on repo links,
         # so clean things up just in case
-        if self.url and 'github.com' in self.url:
-            self.url = self.url.rstrip('/')
+        if self.source_code and 'github.com' in self.source_code:
+            self.source_code = self.source_code.rstrip('/')
             
         # update GitHub stats
         self.update_github_stats()
@@ -126,9 +126,9 @@ class Code(CachingMixin, models.Model):
         does _not_ save those stats. That is left to the function that calls
         the method to avoid unnecessary db hits (e.g. the save() method above).
         '''
-        if self.url and '//github.com/' in self.url.lower():
+        if self.source_code and '//github.com/' in self.source_code.lower():
             # create our connection to the GitHub API
-            _github_location = self.url.split('github.com/')[1]
+            _github_location = self.source_code.split('github.com/')[1]
             _github_user, _github_repo = _github_location.split('/')
             _github_api_url = 'https://api.github.com/repos/%s/%s?client_id=%s&client_secret=%s' % (
                 _github_user.lower(), _github_repo.lower(),
