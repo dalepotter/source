@@ -13,7 +13,7 @@ from django.template.defaultfilters import striptags, truncatewords
 from caching.base import CachingManager, CachingMixin
 from sorl.thumbnail import ImageField
 from source.people.models import Person, Organization
-from source.tags.models import TechnologyTaggedItem, ConceptTaggedItem
+from source.tags.models import TechnologyTaggedItem, ConceptTaggedItem, DataTaggedItem, SkillTaggedItem
 from source.utils.caching import expire_page_cache
 from taggit.managers import TaggableManager
 
@@ -36,9 +36,13 @@ class Code(CachingMixin, models.Model):
     url = models.URLField(verify_exists=False)
     description = models.TextField('Description', blank=True)
     summary = models.TextField(blank=True, help_text='Short, one- or two-sentence version of description, used on list pages.')
+    pros = models.TextField(blank=True, help_text='What are the advantages of this tool?')
+    cons = models.TextField(blank=True, help_text='And the disadvantages of this tool?')
     screenshot = ImageField(upload_to='img/uploads/code_screenshots', help_text="Resized to fit 350x250 box in template", blank=True, null=True)
     people = models.ManyToManyField(Person, blank=True, null=True)
     organizations = models.ManyToManyField(Organization, blank=True, null=True)
+    source_code = models.URLField(blank=True)
+    documentation = models.URLField(blank=True)
     repo_last_push = models.DateTimeField(blank=True, null=True)
     repo_forks = models.PositiveIntegerField(blank=True, null=True)
     repo_watchers = models.PositiveIntegerField(blank=True, null=True)
@@ -47,6 +51,8 @@ class Code(CachingMixin, models.Model):
     tags = TaggableManager(blank=True, help_text='Automatic combined list of Technology Tags and Concept Tags, for easy searching')
     technology_tags = TaggableManager(verbose_name='Technology Tags', help_text='A comma-separated list of tags describing relevant technologies', through=TechnologyTaggedItem, blank=True)
     concept_tags = TaggableManager(verbose_name='Concept Tags', help_text='A comma-separated list of tags describing relevant concepts', through=ConceptTaggedItem, blank=True)
+    data_tags = TaggableManager(verbose_name='Data Source Tags', help_text='A comma-separated list of tags listing data sources', through=DataTaggedItem, blank=True)
+    skill_tags = TaggableManager(verbose_name='Skill level Tags', help_text='A comma-separated list of tags describing skill level required', through=SkillTaggedItem, blank=True)
     objects = models.Manager()
     live_objects = LiveCodeManager()
     
