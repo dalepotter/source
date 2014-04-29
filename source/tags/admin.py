@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import TechnologyTag, TechnologyTaggedItem, ConceptTag, ConceptTaggedItem, DataTag, DataTaggedItem, SkillTag, SkillTaggedItem
+from .models import TechnologyTag, TechnologyTaggedItem, ConceptTag, ConceptTaggedItem, DataTag, DataTaggedItem, SkillTag, SkillTaggedItem, ThemeTag, ThemeTaggedItem, StatusTag, StatusTaggedItem
 
 
 class TechnologyTaggedItemInline(admin.StackedInline):
@@ -39,8 +39,28 @@ class SkillTagAdmin(admin.ModelAdmin):
         SkillTaggedItemInline
     ]
 
+class ThemeTaggedItemInline(admin.StackedInline):
+    model = ThemeTaggedItem
+
+class ThemeTagAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    inlines = [
+        ThemeTaggedItemInline
+    ]
+
+class StatusTaggedItemInline(admin.StackedInline):
+    model = StatusTaggedItem
+
+class StatusTagAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    inlines = [
+        StatusTaggedItemInline
+    ]
+
 
 admin.site.register(TechnologyTag, TechnologyTagAdmin)
 admin.site.register(ConceptTag, ConceptTagAdmin)
 admin.site.register(DataTag, DataTagAdmin)
 admin.site.register(SkillTag, SkillTagAdmin)
+admin.site.register(ThemeTag, ThemeTagAdmin)
+admin.site.register(StatusTag, StatusTagAdmin)

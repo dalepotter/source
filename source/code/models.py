@@ -13,7 +13,7 @@ from django.template.defaultfilters import striptags, truncatewords
 from caching.base import CachingManager, CachingMixin
 from sorl.thumbnail import ImageField
 from source.people.models import Person, Organization
-from source.tags.models import TechnologyTaggedItem, ConceptTaggedItem, DataTaggedItem, SkillTaggedItem
+from source.tags.models import TechnologyTaggedItem, ConceptTaggedItem, DataTaggedItem, SkillTaggedItem, ThemeTaggedItem, StatusTaggedItem
 from source.utils.caching import expire_page_cache
 from taggit.managers import TaggableManager
 
@@ -53,6 +53,9 @@ class Code(CachingMixin, models.Model):
     concept_tags = TaggableManager(verbose_name='Concept Tags', help_text='A comma-separated list of tags describing relevant concepts', through=ConceptTaggedItem, blank=True)
     data_tags = TaggableManager(verbose_name='Data Source Tags', help_text='A comma-separated list of tags listing data sources', through=DataTaggedItem, blank=True)
     skill_tags = TaggableManager(verbose_name='Skill level Tags', help_text='A comma-separated list of tags describing skill level required', through=SkillTaggedItem, blank=True)
+    status_tags = TaggableManager(verbose_name='Status Tags', help_text='A comma-separated list of tags describing the current status of the tool', through=StatusTaggedItem, blank=True)
+    theme_tags = TaggableManager(verbose_name='Theme Tags', help_text='A comma-separated list of tags describing the relevant theme of the tool', through=ThemeTaggedItem, blank=True)
+
     objects = models.Manager()
     live_objects = LiveCodeManager()
     

@@ -11,7 +11,7 @@ from caching.base import CachingManager, CachingMixin
 from sorl.thumbnail import ImageField
 from source.code.models import Code
 from source.people.models import Person, Organization
-from source.tags.models import TechnologyTaggedItem, ConceptTaggedItem
+from source.tags.models import TechnologyTaggedItem, ConceptTaggedItem, SkillTaggedItem
 from source.utils.caching import expire_page_cache
 from taggit.managers import TaggableManager
 
@@ -44,6 +44,7 @@ class Article(CachingMixin, models.Model):
     tags = TaggableManager(blank=True, help_text='Automatic combined list of Technology Tags and Concept Tags, for easy searching')
     technology_tags = TaggableManager(verbose_name='Technology Tags', help_text='A comma-separated list of tags describing relevant technologies', through=TechnologyTaggedItem, blank=True)
     concept_tags = TaggableManager(verbose_name='Concept Tags', help_text='A comma-separated list of tags describing relevant concepts', through=ConceptTaggedItem, blank=True)
+    skill_tags = TaggableManager(verbose_name='Skill Tags', help_text='A comma-separated list of tags describing skill level required', through=SkillTaggedItem, blank=True)
     objects = models.Manager()
     live_objects = LiveArticleManager()
     disable_auto_linebreaks = models.BooleanField(default=False, help_text='Check this if body and article blocks already have HTML paragraph tags.')
