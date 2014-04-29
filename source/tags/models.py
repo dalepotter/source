@@ -77,4 +77,16 @@ class SkillTag(TagBase):
 
 class SkillTaggedItem(GenericTaggedItemBase):
     tag = models.ForeignKey(SkillTag, related_name="%(app_label)s_%(class)s_skilltag_items")
+
+class ThemeTag(TagBase):
+    pass
+
+class ThemeTaggedItem(GenericTaggedItemBase):
+    tag = models.ForeignKey(ThemeTag, related_name="%(app_label)s_%(class)s_themetag_items")
+
+class StatusTag(TagBase):
+    pass
+
+class StatusTaggedItem(GenericTaggedItemBase):
+    tag = models.ForeignKey(StatusTag, related_name="%(app_label)s_%(class)s_statustag_items")
     
