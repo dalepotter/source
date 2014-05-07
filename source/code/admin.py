@@ -39,9 +39,9 @@ class CodeAdmin(AdminImageMixin, admin.ModelAdmin):
         concept_tags_list = form.cleaned_data['concept_tags']
         data_tags_list = form.cleaned_data['data_tags']
         skill_tags_list = form.cleaned_data['skill_tags']
-        status_tags_list = form.clean_data['status_tags']
-        theme_tags_list = form.clean_data['theme_tags']
-        merged_tags = technology_tags_list + concept_tags_list + data_tags_list + skill_tags_list + theme_tags_list + status_tags_list
+        status_tags_list = form.cleaned_data['status_tags']
+        theme_tags_list = form.cleaned_data['theme_tags']
+        merged_tags = technology_tags_list + concept_tags_list + data_tags_list + theme_tags_list + status_tags_list
         if merged_tags:
             form.cleaned_data['tags'] = merged_tags
 
