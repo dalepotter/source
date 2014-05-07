@@ -3,7 +3,7 @@
 {% block page_title %}{{ code.name }} - {{ super() }}{% endblock %}
 
 {% block content %}
-<h1 class="maintopic"><a href="{{ url('code_list') }}">Code</a></h1>
+<h1 class="maintopic"><a href="{{ url('code_list') }}">Tools</a></h1>
 
 <div class="page-block">
     <h2 id="code-name">{% include "code/_code_category_and_tags_overline.html" %}{{ code.name|typogrify }}</h2>
@@ -14,25 +14,17 @@
         </div>
     {% endif %}
 
-    {% if code.description_or_summary %}{{ code.description_or_summary|linebreaks|typogrify|safe }}{% endif %}
-    <ul class="link-list" id="code-details">
-        <li>
-            <i class="icon-home"></i><a id="code-url" href="{{ code.url }}">Code repo</a>
-            {% if code.is_active %}<i class="icon-ok" style="margin-left: 1em;"></i>Active project{% endif %}
-            {% if code.seeking_contributors %}<i class="icon-ok" style="margin-left: 1em;"></i>Seeking contributors{% endif %}
-        </li>
-        {% if code.repo_last_push %}
-        <li class="spacers">
-            <i class="icon-github"></i>
-            <span>Forks: {{ code.repo_forks|dj_intcomma }}</span>
-            <span>Watchers: {{ code.repo_watchers|dj_intcomma }}</span>
-            <span>Last push: {{ dj_date(code.repo_last_push, "l, F j, Y") }}</span>
-        </li>
-        {% endif %}
-    </ul>
-</div>
 
-<div class="page-block">
+ <aside>
+     <ul class="link-list" id="code-details">
+        
+            <li><i class="icon-home"></i><a id="code-url" href="{{ code.url }}">{{ code.url }}</a>
+            <li>{% if code.source_code %}<i class="icon-code" style="margin-left: 1em;"></i><a id="code-source_code" href="{{ code.source_code }}">Source code</a>{% endif %}
+            <li>{% if code.documentation %}<i class="icon-list-alt" style="margin-left: 1em;"></i><a id="code-documentation" href="{{ code.documentation }}">Documentation</a>{% endif %}
+            <li>{% if code.is_active %}<i class="icon-ok" style="margin-left: 1em;"></i>Active project{% endif %}
+            <li>{% if code.seeking_contributors %}<i class="icon-ok" style="margin-left: 1em;"></i>Seeking contributors{% endif %}
+    </ul>
+
     <div id="code-link-lists">
         {% with person_link_list = code.get_live_people_set() %}
         {% include "people/_person_link_list.html" %}{% endwith %}
@@ -46,8 +38,32 @@
         {% with basic_link_list = code.codelink_set.all() %}
         {% include "utils/_basic_link_list.html" %}{% endwith %}
     </div>
+
+     <ul class="link-list" id="code-details">
+        <h3 class="subhead list-header">Source code statistics</h3>
+        {% if code.repo_last_push %}
+            <li><i class="icon-github"></i><span>Forks: {{ code.repo_forks|dj_intcomma }}</span>
+            <li><span>Watchers: {{ code.repo_watchers|dj_intcomma }}</span>
+            <li><span>Last push: {{ dj_date(code.repo_last_push, "l, F j, Y") }}</span>
+        {% endif %}
+     </ul>
+ </aside>
+
+        <h3 class="section-headings">What is it?</h3>
+            {% if code.description %}{{ code.description|linebreaks|typogrify|safe }}{% endif %}
+
+        <h3 class="section-headings">Useful to find out more about...</h3>
+            {% if code.summary %}{{ code.summary|linebreaks|typogrify|safe }}{% endif %}
+
+        <h3 class="section-headings">Advantages</h3>
+            {% if code.pros %}{{ code.pros|linebreaks|typogrify|safe }}{% endif %}
+
+        <h3 class="section-headings">Disadvantages</h3>
+            {% if code.cons %}{{ code.cons|linebreaks|typogrify|safe }}{% endif %}
+
 </div>
 {% endblock content %}
+
 
 {% block site_js_extra %}
 {% if 'github.com/' in code.url %}{# load the in-page repo browser #}
@@ -75,5 +91,7 @@ function loadRepo(user, repo, branch) {
     });
 }
 </script>
+</div>
 {% endif %}
 {% endblock %}
+
