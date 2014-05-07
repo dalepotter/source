@@ -27,7 +27,7 @@ class CodeList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(CodeList, self).get_context_data(**kwargs)
-        context['active_nav'] = 'Code'
+        context['active_nav'] = 'Tools'
 
         if self.tags:
             context['tags'] = self.tags
