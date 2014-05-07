@@ -3,6 +3,12 @@
 {% block content %}
 <h1 class="maintopic"><a href="{{ url('code_list') }}">Tools</a>{% if tag %} / <span class="category">{{ tag.name|smartypants }}</span>{% endif %}</h1>
 
+<h4 class="subheading">I want to <a href=/code/tags/visualising/>visualise</a> aid data</h4>
+<h4 class="subheading">I want to <a href=/code/tags/understanding/>understand</a> aid flows<a href=/code/tags/ <a href=/code/tags/country-specific> into my country</a> / <a href=/code/tags/country-specific> into my country</a> / <a href=/code/tags/donor-country> from my country</a> / <a href=/code/tags/donor-specific/>from a certain donor</a> / <a href=/tags/global-overview/>globally</a></h4>
+<h4 class="subheading">I want to <a href=/code/tags/wrangling/>wrangle</a> aid data</h4>
+
+<h3 class="subheading">Search</h3>
+
 <div id="filterable-list">
 {% if tags %}
     <div class="grouper-block filter-block">
