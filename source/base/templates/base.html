@@ -74,18 +74,19 @@
             </div>
         </header>
         <div class="content">
-            <div class="container page-block">
-                <a href="{{ url('homepage') }}"><img id="main-logo" src="{{ static('base/img/source_retina.png') }}" alt="Source"></a>
-                {% block base_tagline %}{% endblock %}
-            </div>
-        
             <div class="container">
-                {% block base_above_article %}{% endblock %}
-                <article class="{% block article_class %}{% endblock %}">{% block content %}{% endblock %}</article>
-                {% block base_aside %}{% endblock %}
-                {% block base_below_article %}{% endblock %}
+                <div class="page-block">
+                    <a href="{{ url('homepage') }}"><img id="main-logo" src="{{ static('base/img/dev_toolkit_logo-02.png') }}" alt="Toolkit"></a>
+                    {% block base_tagline %}{% endblock %}
+                </div>
+            
+                <div>
+                    {% block base_above_article %}{% endblock %}
+                    <article class="{% block article_class %}{% endblock %}">{% block content %}{% endblock %}</article>
+                    {% block base_aside %}{% endblock %}
+                    {% block base_below_article %}{% endblock %}
+                </div>
             </div>
-        </div>
         <footer class="container">{% block footer %}
             <section class="external">
              <div class="col">
@@ -96,20 +97,24 @@
                     <li><i class="icon-envelope-alt"></i><a href="mailto:zara@opendevtoolkit.net">Contact us</a></li>
                     <li><a href="/contribute/">Add a tool, or write an article</a></li>
                     <li>Connect on Twitter <a href="http://twitter.com/opendevtoolkit" class="twitter-follow-button" data-show-count="false">@OpenDevToolkit</a></li>
-                    <li><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
                 </ul>
                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
             </div>
             <div class="col">
-                <h2>Learn more about Open Development</h2>
-                <p>The Open Development Toolkit is a project from <a href="http://devinit.org">Development Initiatives</a> and <a href="http://okfn.org">Open Knowledge</a>, which began in January 2014. The Toolkit will act as a hub around open development, bringing together tools and training materials in one place, with the aim of increasing use of open development data and encouraging its use to inform decisions within the sector. Learn more <a href="/about/">about the project</a> or <a href="/contribute/">contribute your work</a>.</p>
+                <h2>   </h2>
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
             </div>
             <div class="col">
                 <h2>A project of</h2>
-                <p>LOGOS TO GO HERE</p>
+                <img src="static/base/img/DIlogo.png" alt="Development Initiatives">
+                <img src="static/base/img/okfn-landscape-black.png" alt="Open Knowledge">
+
             </div>
        </section>
+
         {% endblock footer %}</footer>
+        </div>
+
 
         {% block site_js %}
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
