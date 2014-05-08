@@ -4,15 +4,22 @@
 .container {
     width: auto;
     max-width: 800px;
+    padding-right: 2.5em;
+    padding-left: 2.5em;
+    padding-top: 2em;
+    background-color: #EFEFEF;
 }
 
 .content {
-    margin: 0 15px;
+    margin: 0 0px;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background-image: url(/static/base/img/gears_new.png)
 }
 
 footer {
     border-top: none;
-    margin: 1em 0;
+    margin: 1em 0em 0em 0em;
     padding-top: 1em;
 }
 
@@ -167,7 +174,7 @@ aside .byline .link-list {
 }
 
 .content {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 body {
@@ -316,7 +323,7 @@ h3 {
     font-size: 24px;
     margin-bottom: 12px;
     font-weight: 300;
-    color: rgba(250,121,7,0.94);
+    color: #2C4C9C;
 }
 
 h3 a {
@@ -497,11 +504,11 @@ h1.name {
 }
 
 span.category, span.category a {
-    color: rgb(252, 110, 31);
+    color: #2C4C9C;
 }
 
 span.tags {
-    color: #ebebeb;
+    color: #9f9f9f;
 }
 
 span.tags:before {
@@ -509,7 +516,7 @@ span.tags:before {
 }
 
 span.tags a {
-    color: #bebebe;
+    color: #868686;
     padding-right: 5px;
     padding-left: 5px;
 }
@@ -713,7 +720,7 @@ aside.homepage, aside.search-results {
 aside.homepage h2, .search-results h2 {
     font-weight: 300;
     line-height: 1.4em;
-    color: rgb(252, 110, 31);
+    color: #2C4C9C;
 }
 
 aside.homepage ul, aside.search-results ul {
