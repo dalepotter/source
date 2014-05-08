@@ -8,8 +8,8 @@
             "created": "2013-03-28T22:22:46.340", 
             "modified": "2013-05-08T22:02:27.062", 
             "gets_promo_items": false, 
-            "slug": "articles", 
-            "name": "Features"
+            "slug": "Blog", 
+            "name": "Blog"
         }
     }, 
     {
@@ -117,10 +117,10 @@
         "pk": 1, 
         "model": "articles.category", 
         "fields": {
-            "slug": "learning", 
+            "slug": "training", 
             "section": 1, 
             "modified": "2013-03-28T22:21:32.412", 
-            "name": "Learning", 
+            "name": "Training", 
             "created": "2013-03-28T22:21:32.412"
         }
     }
