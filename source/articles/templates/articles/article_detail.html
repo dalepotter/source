@@ -23,6 +23,7 @@
 
 {% block article_class %}article-detail{% endblock %}
 {% block content %}
+
     {% if article.image %}
         <div class="image-full-width-wrapper">
             <img src="{{ MEDIA_URL }}{{ thumbnail(article.image, "800") }}" alt="{{ article.title }}">
@@ -64,9 +65,10 @@
             {% include "people/_organization_link_list.html" %}{% endwith %}
         </div>
     </aside>
-    
-    {{ article.pretty_body_text|typogrify|safe }}
-    
+
+
+    {{ article.body|markdown }}
+
     {% for articleblock in article.articleblock_set.all() %}
     <div class="article-block">
         <h3 id="{{ articleblock.slug }}">{{ articleblock.title|typogrify }}</h3>
