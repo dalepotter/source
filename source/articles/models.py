@@ -11,7 +11,7 @@ from caching.base import CachingManager, CachingMixin
 from sorl.thumbnail import ImageField
 from source.code.models import Code
 from source.people.models import Person, Organization
-from source.tags.models import TechnologyTaggedItem, ConceptTaggedItem, SkillTaggedItem
+from source.tags.models import TechnologyTaggedItem, ConceptTaggedItem, SkillTaggedItem, ThemeTaggedItem
 from source.utils.caching import expire_page_cache
 from taggit.managers import TaggableManager
 
