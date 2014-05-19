@@ -864,7 +864,7 @@ aside.search-results-single-col {
 }
 
 article ul li, article ol li {
-    font-family: Georgia;
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     line-height: 1.6em;
     margin-bottom: 10px;
