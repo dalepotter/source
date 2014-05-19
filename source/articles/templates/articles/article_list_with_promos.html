@@ -7,7 +7,7 @@
     {% include "articles/_article_list_section_overline.html" %}
 {% endif %}
 
-{% if section.description %}<p class="intro">{{ section.description|safe }}</p>{% endif %}
+{% if section.description %}<p class="intro">{{ section.description|markdown }}</p>{% endif %}
 
 {% if lead_promo %}
     {% with article=lead_promo %}
