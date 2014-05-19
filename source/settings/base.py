@@ -27,9 +27,12 @@ INSTALLED_APPS = list(INSTALLED_APPS) + [
     'django.contrib.redirects',
     'django.contrib.sites',
     'django_browserid',
+    'jingo_markdown',
 ]
 INSTALLED_APPS = filter(lambda app: 'djcelery' not in app, INSTALLED_APPS)
 
+JINJA_CONFIG = JINJA_CONFIG()
+JINJA_CONFIG['extensions'].append('jingo_markdown.extensions.MarkdownExtension')
 
 # BrowserID authentication settings
 BROWSERID_CREATE_USER = '%s.people.utils.create_auth_user' % PROJECT_MODULE
