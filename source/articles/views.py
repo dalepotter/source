@@ -21,9 +21,9 @@ class ArticleList(ListView):
         self.category = kwargs.get('category', None)
         if self.category:
             self.category = get_object_or_404(Category, slug=self.category)
-            if self.category.slug == 'learning' and not self.section:
-                # redirecting this to our "Section" page for Learning
-                return HttpResponseRedirect(reverse('article_list_by_section', args=('learning',)))
+            if self.category.slug == 'training' and not self.section:
+                # redirecting this to our "Section" page for Training
+                return HttpResponseRedirect(reverse('article_list_by_section', args=('training',)))
 
         self.tag_slugs = kwargs.get('tag_slugs', None)
         self.tags = []
