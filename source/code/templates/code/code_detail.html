@@ -86,19 +86,15 @@
             <li><span>Last push: {{ dj_date(code.repo_last_push, "l, F j, Y") }}</span>
         {% endif %}
      </ul>
- </aside>
 
-        <h3 class="section-headings">What is it?</h3>
-            {% if code.description %}{{ code.description|linebreaks|typogrify|safe }}{% endif %}
 
-        <h3 class="section-headings">Useful to find out more about...</h3>
-            {% if code.summary %}{{ code.summary|linebreaks|typogrify|safe }}{% endif %}
 
-        <h3 class="section-headings">Advantages</h3>
-            {% if code.pros %}{{ code.pros|linebreaks|typogrify|safe }}{% endif %}
+  </div>
+</div>
 
-        <h3 class="section-headings">Disadvantages</h3>
-            {% if code.cons %}{{ code.cons|linebreaks|typogrify|safe }}{% endif %}
+</div>
+    </div>
+</div>
 
 </div>
 {% endblock content %}
