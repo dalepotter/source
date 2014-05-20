@@ -1,5 +1,14 @@
 {% for organization in organization_link_list %}
     {% if loop.first %}{% if not hide_link_list_title %}<h3 class="subhead list-header">Organisations</h3>{% endif %}
+
+    {% block content %}
+
+<body>
+	<p>Here's a list of organisations who are working in the Open Development space; if you as an individual or an organisation would like to be added, or if you have updates to make to your organisation's tool list or articles, please fill in <a href="https://docs.google.com/a/okfn.org/forms/d/1Ri0nloqLAaFQ3ucZism2A7cOM32w8o_GGUwaaK-74G0/viewform">this form</a>. We also welcome blog posts, tool reviews, and other updates to the site; if you'd like to contribute, <a href ="mailto:zara@opendevtoolkit.net">drop us a line</a>- we'd love to hear from you!</p>
+</body>
+
+{% endblock content %}
+
     <ul class="link-list">{% endif %}
         <li><i class="icon-cogs"></i><a href="{{ organization.get_absolute_url() }}">{{ organization.name|smartypants }}</a></li>
     {% if loop.last %}</ul>{% endif %}{% endfor %}
