@@ -6,40 +6,79 @@
 <h1 class="maintopic"><a href="{{ url('code_list') }}">Tools</a></h1>
 
 <div class="page-block">
-    <h2 id="code-name">{% include "code/_code_category_and_tags_overline.html" %}{{ code.name|typogrify }}</h2>
+    <h2 id="code-name">{{ code.name|typogrify }}</h2>
 
-    {% if code.screenshot %}
-        <div class="image-inset-right-wrapper">
-            <img src="{{ MEDIA_URL }}{{ thumbnail(code.screenshot, "300") }}" alt="{{ code.name }}">
+<!-- {% include "code/_code_category_and_tags_overline.html" %} to get tags showing up -->
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#whatdoesitdo" data-toggle="tab">What does it do?</a></li>
+  <li><a href="#howwasitmade" data-toggle="tab">How was it made?</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane fade in active" id="whatdoesitdo">
+
+        {% if code.screenshot %}
+        <div class="image-inset-left-wrapper">
+            <img src="{{ MEDIA_URL }}{{ thumbnail(code.screenshot, "400") }}" alt="{{ code.name }}">
         </div>
     {% endif %}
 
+  <h5><i class="icon-home"></i><a id="code-url" href="{{ code.url }}">{{ code.url|typogrify|safe }}</a></h5>
+    <div id="code-link-lists">
+        {% with organization_link_list = code.get_live_organization_set() %}
+        {% include "people/_organization_link_list.html" %}{% endwith %}
 
- <aside>
+        {% with person_link_list = code.get_live_people_set() %}
+        {% include "people/_person_link_list.html" %}{% endwith %}
+    
+    </div>
+
+        <h3 class="section-headings">What is it?</h3>
+        {% if code.summary %}{{ code.summary|linebreaks|typogrify|safe }}{% endif %}
+
+        <h3 class="section-headings">Advantages</h3>
+            {% if code.pros %}{{ code.pros|linebreaks|typogrify|safe }}{% endif %}
+
+        <h3 class="section-headings">Disadvantages</h3>
+            {% if code.cons %}{{ code.cons|linebreaks|typogrify|safe }}{% endif %}
+
+        {% with article_link_list = code.get_live_article_set() %}
+        {% include "articles/_article_link_list.html" %}{% endwith %}
+
+        <h5>{% include "code/_code_category_and_tags_overline.html" %}</h5>
+  </div>
+  <div class="tab-pane fade" id="howwasitmade">
+
+            {% if code.description %}{{ code.description|linebreaks|typogrify|safe }}{% endif %}
+<div class="container-fluid fill">
+    <div class="row-fluid">
+        <div class="span6">
      <ul class="link-list" id="code-details">
         
-            <li><i class="icon-home"></i><a id="code-url" href="{{ code.url }}">{{ code.url }}</a>
+            <li><i class="icon-home" style="margin-left: 1em;"></i><a id="code-url" href="{{ code.url }}">{{ code.url }}</a>
             <li>{% if code.source_code %}<i class="icon-code" style="margin-left: 1em;"></i><a id="code-source_code" href="{{ code.source_code }}">Source code</a>{% endif %}
             <li>{% if code.documentation %}<i class="icon-list-alt" style="margin-left: 1em;"></i><a id="code-documentation" href="{{ code.documentation }}">Documentation</a>{% endif %}
             <li>{% if code.is_active %}<i class="icon-ok" style="margin-left: 1em;"></i>Active project{% endif %}
             <li>{% if code.seeking_contributors %}<i class="icon-ok" style="margin-left: 1em;"></i>Seeking contributors{% endif %}
     </ul>
 
-    <div id="code-link-lists">
+ <div id="code-link-lists">
         {% with person_link_list = code.get_live_people_set() %}
         {% include "people/_person_link_list.html" %}{% endwith %}
     
         {% with organization_link_list = code.get_live_organization_set() %}
         {% include "people/_organization_link_list.html" %}{% endwith %}
     
-        {% with article_link_list = code.get_live_article_set() %}
-        {% include "articles/_article_link_list.html" %}{% endwith %}
-    
         {% with basic_link_list = code.codelink_set.all() %}
         {% include "utils/_basic_link_list.html" %}{% endwith %}
     </div>
 
-     <ul class="link-list" id="code-details">
+        </div>
+
+<div class="span6">
+         <ul class="link-list" id="code-details">
         <h3 class="subhead list-header">Source code statistics</h3>
         {% if code.repo_last_push %}
             <li><i class="icon-github"></i><span>Forks: {{ code.repo_forks|dj_intcomma }}</span>
