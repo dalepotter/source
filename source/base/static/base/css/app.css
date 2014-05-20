@@ -341,7 +341,7 @@ h4, h4.subhead, .toc li {
     margin-top: 0;
     margin-bottom: 1em;
     line-height: 1.3em;
-    color: rgba(163,163,163,1);
+    color: #8a8a8a;
 }
 article h4 {
     margin-top: 30px;
