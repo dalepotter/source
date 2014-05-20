@@ -78,7 +78,7 @@
 
 <div id="people" class="admin-panel">
     <h2>Add A Person To Your Organization</h2>
-    <p class="helptext">Select a person already in the Source database, or type a full name to create someone new and add them to your staff list below.</p>
+    <p class="helptext">Select a person already in the Toolkit database, or type a full name to create someone new and add them to your staff list below.</p>
     <div class="page-block typeahead-widget">
         <form method="post" action="{{ url('person_update') }}" id="form-person-create" onsubmit="createPerson();return false;">
             <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
