@@ -9,6 +9,7 @@ class Migration(SchemaMigration):
 
     depends_on = (
         ('people', '0001_initial.py'),
+        ('code', '0001_initial.py'),
     )
 
     def forwards(self, orm):
