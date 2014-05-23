@@ -18,7 +18,7 @@ DATABASES = {
 }
 
 if 'DATABASE_NAME' in env:
-   DATABASES['default']['ENGINE'] = 'django.db.backends.posgresql_psycopg2'
+   DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
 else:
     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
