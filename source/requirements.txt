@@ -1,5 +1,0 @@
--r requirements/prod.txt
-psycopg2
-gunicorn
-jingo-markdown==1.1
-
