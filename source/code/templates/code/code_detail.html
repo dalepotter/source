@@ -89,15 +89,20 @@
 
 <div class="span6">
          <ul class="link-list" id="code-details">
+            {% if code.seeking_contributors %}
         <h3 class="subhead list-header">Source code statistics</h3>
         {% if code.repo_last_push %}
             <li><i class="icon-github"></i><span>Forks: {{ code.repo_forks|dj_intcomma }}</span>
             <li><span>Watchers: {{ code.repo_watchers|dj_intcomma }}</span>
             <li><span>Last push: {{ dj_date(code.repo_last_push, "l, F j, Y") }}</span>
+        {% else %}
+       <i class="icon-lock"></i> No source code statistics available
         {% endif %}
      </ul>
+            {% else %} {% endif %}
 
-
+        {% with article_link_list = code.get_live_article_set() %}
+        {% include "articles/_article_link_list.html" %}{% endwith %}
 
   </div>
 </div>
