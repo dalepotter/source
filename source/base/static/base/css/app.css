@@ -23,6 +23,13 @@ footer {
     padding-top: 1em;
 }
 
+.mailinglist {
+    margin: 0 0px;
+    background-color: #566faf;
+    padding-top: 0em;
+    padding-bottom: 0em;
+}
+
 a {
     text-decoration: underline;
 }
