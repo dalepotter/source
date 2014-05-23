@@ -67,6 +67,10 @@ BASE_PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.UnsaltedMD5PasswordHasher',
 )
 
+from django_sha2 import get_password_hashers
+PASSWORD_HASHERS = get_password_hashers(BASE_PASSWORD_HASHERS, HMAC_KEYS)
+
+
 # Make this unique, and don't share it with anybody.  It cannot be blank.
 SECRET_KEY = env.get("SECRET_KEY", "batman")
 
