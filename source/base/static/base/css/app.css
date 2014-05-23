@@ -619,7 +619,7 @@ img.list-thumbnail {
     margin: 0 .67em .25em 0;
 }
 
-.small, .link-list li i.small {
+.small, small, .link-list li i.small {
     font-size: 0.8em;
 }
 
