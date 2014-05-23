@@ -1,1 +1,1 @@
-web: gunicorn wsgi/playdoh.wsgi
+web: gunicorn wsgi.playdoh:application
