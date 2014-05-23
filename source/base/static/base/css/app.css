@@ -594,18 +594,18 @@ h1.maintopic {
 
 .image-inset-left-wrapper {
     float: left;
-    width: 700px;
+    width: 400px;
     margin: .33em 1em 1em 0;
 }
 
 .image-inset-right-wrapper {
     float: right;
-    width: 700px;
+    width: 400px;
     margin: .33em 0 1em 1em;
 }
 
 .image-inset-left-wrapper img, .image-inset-right-wrapper img {
-    width: 700px;
+    width: 400px;
 }
 
 img.list-thumbnail,
