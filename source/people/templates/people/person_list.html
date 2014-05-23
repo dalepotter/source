@@ -5,6 +5,8 @@
     <span class="category">People</span> / <a href="{{ url('organization_list') }}">Organisations</a>
 </h1>
 
+    <p>Here's a list of people who are active in the Open Development space; if you as an individual or an organisation would like to be added, or if you have updates to make to your organisation's tool list or articles, or your personal portfolio, please fill in <a href="https://docs.google.com/a/okfn.org/forms/d/1Ri0nloqLAaFQ3ucZism2A7cOM32w8o_GGUwaaK-74G0/viewform">this form</a>. We also welcome blog posts, tool reviews, and other updates to the site; if you'd like to contribute, <a href ="mailto:zara@opendevtoolkit.net">drop us a line</a>- we'd love to hear from you!</p>
+
 <div id="filterable-list">
 {% for alpha in object_list|groupby('sort_letter') %}
     <div class="grouper-block filter-block">
