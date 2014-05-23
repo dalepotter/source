@@ -1,7 +1,6 @@
 *.log
 *.pot
 *.pyc
-source/settings/local.py
 source_demo_db
 venv/*
 static/*
