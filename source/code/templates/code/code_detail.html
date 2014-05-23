@@ -25,7 +25,7 @@
         </div>
     {% endif %}
 
-  <h5><i class="icon-home"></i><a id="code-url" href="{{ code.url }}">{{ code.url|typogrify|safe }}</a></h5>
+  <h5><i class="icon-home"></i><a id="code-url" href="{{ code.url }}"> Website</a></h5>
     <div id="code-link-lists">
         {% with organization_link_list = code.get_live_organization_set() %}
         {% include "people/_organization_link_list.html" %}{% endwith %}
@@ -56,12 +56,22 @@
     <div class="row-fluid">
         <div class="span6">
      <ul class="link-list" id="code-details">
-        
-            <li><i class="icon-home" style="margin-left: 1em;"></i><a id="code-url" href="{{ code.url }}">{{ code.url }}</a>
-            <li>{% if code.source_code %}<i class="icon-code" style="margin-left: 1em;"></i><a id="code-source_code" href="{{ code.source_code }}">Source code</a>{% endif %}
-            <li>{% if code.documentation %}<i class="icon-list-alt" style="margin-left: 1em;"></i><a id="code-documentation" href="{{ code.documentation }}">Documentation</a>{% endif %}
-            <li>{% if code.is_active %}<i class="icon-ok" style="margin-left: 1em;"></i>Active project{% endif %}
-            <li>{% if code.seeking_contributors %}<i class="icon-ok" style="margin-left: 1em;"></i>Seeking contributors{% endif %}
+        {% if code.seeking_contributors %}
+            <li>{% if code.source_code %}<i class="icon-home"></i><a id="code-url" href="{{ code.url }}">Website</a>
+                {% else %}
+                {% endif %}
+            <li>{% if code.source_code %}<i class="icon-code"></i><a id="code-source_code" href="{{ code.source_code }}">Source code</a>
+                {% else %} 
+                <i class="icon-lock"></i>No source code available
+                {% endif %}
+            <li>{% if code.documentation %}<i class="icon-list-alt"></i><a id="code-documentation" href="{{ code.documentation }}">Documentation</a>
+                {% else %}
+                <i class="icon-lock"></i>No code documentation available
+                {% endif %}
+            <li>{% if code.is_active %}<i class="icon-ok"></i>Active project{% endif %}
+        {% else %}
+        Source code available: not applicable
+        {% endif %}
     </ul>
 
  <div id="code-link-lists">
