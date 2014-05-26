@@ -173,47 +173,47 @@ class ArticleBlock(CachingMixin, models.Model):
         return _body
 
 
-@receiver(post_save, sender=Article)
-def clear_caches_for_article(sender, instance, **kwargs):
-    # clear cache for article detail page
-    expire_page_cache(instance.get_absolute_url())
+# @receiver(post_save, sender=Article)
+# def clear_caches_for_article(sender, instance, **kwargs):
+#     # clear cache for article detail page
+#     expire_page_cache(instance.get_absolute_url())
     
-    # clear cache for article list pages
-    if instance.section.slug:
-        expire_page_cache(reverse(
-            'article_list_by_section',
-            kwargs = { 'section': instance.section.slug }
-        ))
-    if instance.category:
-        expire_page_cache(reverse(
-            'article_list_by_category',
-            kwargs = { 'category': instance.category.slug }
-        ))
+#     # clear cache for article list pages
+#     if instance.section.slug:
+#         expire_page_cache(reverse(
+#             'article_list_by_section',
+#             kwargs = { 'section': instance.section.slug }
+#         ))
+#     if instance.category:
+#         expire_page_cache(reverse(
+#             'article_list_by_category',
+#             kwargs = { 'category': instance.category.slug }
+#         ))
 
-    # clear caches for related organizations
-    for organization in instance.get_live_organization_set():
-        expire_page_cache(organization.get_absolute_url())
+#     # clear caches for related organizations
+#     for organization in instance.get_live_organization_set():
+#         expire_page_cache(organization.get_absolute_url())
         
-    # clear caches for related people
-    for person in instance.get_live_people_set():
-        expire_page_cache(person.get_absolute_url())
+#     # clear caches for related people
+#     for person in instance.get_live_people_set():
+#         expire_page_cache(person.get_absolute_url())
 
-    # clear caches for related authors
-    for author in instance.get_live_author_set():
-        expire_page_cache(author.get_absolute_url())
+#     # clear caches for related authors
+#     for author in instance.get_live_author_set():
+#         expire_page_cache(author.get_absolute_url())
 
-    # clear caches for related code index entries
-    for code in instance.get_live_code_set():
-        expire_page_cache(code.get_absolute_url())
+#     # clear caches for related code index entries
+#     for code in instance.get_live_code_set():
+#         expire_page_cache(code.get_absolute_url())
         
-    # clear caches for tag pages. FWIW this will miss
-    # tag intersection queries like /foo+bar+baz/, so if we
-    # implement those, they may need to expire naturally
-    for tag in instance.tags.all():
-        expire_page_cache(reverse(
-            'article_list_by_tag',
-            kwargs = { 'tag_slugs': tag.slug }
-        ))
+#     # clear caches for tag pages. FWIW this will miss
+#     # tag intersection queries like /foo+bar+baz/, so if we
+#     # implement those, they may need to expire naturally
+#     for tag in instance.tags.all():
+#         expire_page_cache(reverse(
+#             'article_list_by_tag',
+#             kwargs = { 'tag_slugs': tag.slug }
+#         ))
 
 
 class Section(CachingMixin, models.Model):
