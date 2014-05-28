@@ -494,7 +494,7 @@ aside .link-list {
 
 
 h1 a, h2 a, .link-list a {
-    color: black;
+    color: #333333;
 }
 
 h1.name {
@@ -546,7 +546,7 @@ a {
 
 a:hover {
     text-decoration: underline;
-    color: black;
+    color: #333333;
 }
 
 h1.maintopic {
@@ -772,7 +772,7 @@ ul.orderswitch li {
 }
 
 ul.orderswitch li.active {
-    color: black;
+    color: #333333;
 }
 
 /* enable once we put homepage toggle in place
@@ -1026,7 +1026,7 @@ a.promo p {
 .author-box h3 {
     font-size: 18px;
     margin-bottom: 14px;
-    color: black;
+    color: #333333;
 }
 
 .author-box p {
