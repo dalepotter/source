@@ -28,6 +28,7 @@ INSTALLED_APPS = list(INSTALLED_APPS) + [
     'django.contrib.sites',
     'django_browserid',
     'jingo_markdown',
+    'storages',
 ]
 INSTALLED_APPS = filter(lambda app: 'djcelery' not in app, INSTALLED_APPS)
 
