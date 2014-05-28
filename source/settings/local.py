@@ -100,21 +100,21 @@ if DEV:
 
 # Files stored here even without s3 configs:
 
-MEDIA_ROOT='/media/'
-STATIC_ROOT='/static/'
+MEDIA_ROOT = '/media/'
+STATIC_ROOT = '/static/'
 
-# Files stored here with s3 configs: 
+# Files stored here with s3 configs:
 
 from urlparse import urljoin
 STATIC_URL = urljoin(env.get('S3_HTTP_FRONTEND', ''), STATIC_ROOT)
 MEDIA_URL = urljoin(env.get('S3_HTTP_FRONTEND', ''), MEDIA_ROOT)
 
-# s3 configurations: 
+# s3 configurations:
 
-if env.get('AWS_BUCKET_NAME', None):
+if env.get('AWS_STORAGE_BUCKET_NAME', None):
     AWS_ACCESS_KEY_ID=env['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY=env['AWS_SECRET_ACCESS_KEY']
-    AWS_BUCKET_NAME = env['AWS_BUCKET_NAME']
+    AWS_STORAGE_BUCKET_NAME = env['AWS_STORAGE_BUCKET_NAME']
     DEFAULT_FILE_STORAGE = 'source.s3utils.MediaRootS3BotoStorage'
     STATICFILES_STORAGE = 'source.s3utils.StaticRootS3BotoStorage'
 
