@@ -4,3 +4,4 @@ gunicorn
 jingo-markdown==1.1
 Markdown==2.4
 py-bcrypt==0.3
+django-storages==1.1.8
