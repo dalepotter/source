@@ -104,6 +104,7 @@ from urlparse import urljoin
 if 'S3_HTTP_FRONTEND' in env:
     STATIC_URL = urljoin(env['S3_HTTP_FRONTEND'], '/static/')
     MEDIA_URL = urljoin(env['S3_HTTP_FRONTEND'], '/media/')
+    COMPRESS_URL = STATIC_URL
 
 # s3 configurations:
 
@@ -115,11 +116,6 @@ if env.get('AWS_STORAGE_BUCKET_NAME', None):
     STATICFILES_STORAGE = 'source.s3utils.StaticRootS3BotoStorage'
     COMPRESS_STORAGE = 'source.s3utils.StaticRootS3BotoStorage'
 
-COMPRESS_URL = STATIC_URL
-
 from . import base
 COMPRESS_ROOT = base.STATIC_ROOT
 
-AWS_S3_SECURE_URLS = False
-AWS_QUERYSTRING_AUTH = False
-STATIC_URL = '/static
