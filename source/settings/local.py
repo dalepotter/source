@@ -103,7 +103,7 @@ if DEV:
 from urlparse import urljoin
 if 'S3_HTTP_FRONTEND' in env:
     STATIC_URL = urljoin(env['S3_HTTP_FRONTEND'], '/static/')
-    MEDIA_URL = urljoin(env['S3_HTTP_FRONTEND'], '/media')
+    MEDIA_URL = urljoin(env['S3_HTTP_FRONTEND'], '/media/')
 
 # s3 configurations:
 
@@ -119,3 +119,7 @@ COMPRESS_URL = STATIC_URL
 
 from . import base
 COMPRESS_ROOT = base.STATIC_ROOT
+
+AWS_S3_SECURE_URLS = False
+AWS_QUERYSTRING_AUTH = False
+STATIC_URL = '/static
