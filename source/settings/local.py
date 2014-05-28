@@ -106,8 +106,9 @@ STATIC_ROOT = '/static/'
 # Files stored here with s3 configs:
 
 from urlparse import urljoin
-STATIC_URL = urljoin(env.get('S3_HTTP_FRONTEND', ''), STATIC_ROOT)
-MEDIA_URL = urljoin(env.get('S3_HTTP_FRONTEND', ''), MEDIA_ROOT)
+if 'S3_HTTP_FRONTEND' in env:
+    STATIC_URL = urljoin(env['S3_HTTP_FRONTEND'], '/static/')
+    MEDIA_URL = urljoin(env['S3_HTTP_FRONTEND'], '/media')
 
 # s3 configurations:
 
