@@ -118,5 +118,5 @@ if env.get('AWS_STORAGE_BUCKET_NAME', None):
     DEFAULT_FILE_STORAGE = 'source.s3utils.MediaRootS3BotoStorage'
     STATICFILES_STORAGE = 'source.s3utils.StaticRootS3BotoStorage'
 
-
+COMPRESS_ENABLED = False
 
