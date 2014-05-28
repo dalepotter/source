@@ -1,15 +1,17 @@
 from storages.backends.s3boto import S3BotoStorage
 
+
 class StaticRootS3BotoStorage(S3BotoStorage):
     """
     S3 storage backend that saves the files locally, too.
     """
     def __init__(self, *args, **kwargs):
-    	kwargs['location'] = 'static'
+        kwargs['location'] = 'static'
         super(StaticRootS3BotoStorage, self).__init__(*args, **kwargs)
+
 
 class MediaRootS3BotoStorage(S3BotoStorage):
 
    def __init__(self, *args, **kwargs):
-		kwargs['location'] = 'media'
+        kwargs['location'] = 'media'
         super(MediaRootS3BotoStorage, self).__init__(*args, **kwargs)
