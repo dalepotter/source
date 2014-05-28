@@ -98,11 +98,6 @@ ENGAGE_ROBOTS = True
 if DEV:
     SESSION_COOKIE_SECURE = False
 
-# Files stored here even without s3 configs:
-
-MEDIA_ROOT = '/media/'
-STATIC_ROOT = '/static/'
-
 # Files stored here with s3 configs:
 
 from urlparse import urljoin
@@ -118,6 +113,9 @@ if env.get('AWS_STORAGE_BUCKET_NAME', None):
     AWS_STORAGE_BUCKET_NAME = env['AWS_STORAGE_BUCKET_NAME']
     DEFAULT_FILE_STORAGE = 'source.s3utils.MediaRootS3BotoStorage'
     STATICFILES_STORAGE = 'source.s3utils.StaticRootS3BotoStorage'
+    COMPRESS_STORAGE = 'source.s3utils.StaticRootS3BotoStorage'
 
-COMPRESS_ENABLED = False
 COMPRESS_URL = STATIC_URL
+
+from . import base
+COMPRESS_ROOT = base.STATIC_ROOT
