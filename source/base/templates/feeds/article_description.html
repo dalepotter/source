@@ -1,7 +1,8 @@
 {% if obj.get_live_author_set().exists() %}<p><strong>{% for author in obj.get_live_author_set() %}{% if loop.first %}By {% endif %}{{ author.name() }}{% if not loop.last %}, {% endif %}{% endfor %}</strong></p>{% endif %}
 
 {% if obj.image %}
-    <img src="//{{ site.domain }}{{ MEDIA_URL }}{{ thumbnail(obj.image, "800") }}" alt="{{ obj.title }}">
+    {% set thumb=thumbnail(obj.image, "800") %}
+    <img src="{% if thumb.startswith('http://') %}{{ thumb }}{% else %}//{{ site.domain }}{{ thumb }}{% endif %}" alt="{{ obj.title }}">
     {% if obj.pretty_caption %}<p><strong>{{ obj.pretty_caption|safe }}</strong></p>{% endif %}
 {% endif %}
 
@@ -10,7 +11,8 @@
 {% for articleblock in obj.articleblock_set.all() %}
     <h3 id="{{ articleblock.slug }}">{{ articleblock.title }}</h3>
     {% if articleblock.image %}
-        <img src="//{{ site.domain }}{{ MEDIA_URL }}{{ thumbnail(articleblock.image, "300") }}" alt="{{ articleblock.title }}" align="right">
+        {% set thumb=thumbnail(articleblock.image, "300") %}
+        <img src="{% if thumb.startswith('http://') %}{{ thumb }}{% else %}//{{ site.domain }}{{ thumb }}{% endif %}" alt="{{ articleblock.title }}" align="right">
     {% endif %}
     {{ articleblock.pretty_body_text|safe }}
 {% endfor %}

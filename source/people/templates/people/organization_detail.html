@@ -16,7 +16,7 @@
     {% endif %}
     
     {% if organization.logo %}
-        <img class="logo" src="{{ MEDIA_URL }}{{ thumbnail(organization.logo, "200x50") }}" alt="{{ organization.name }}">
+        <img class="logo" src="{{ thumbnail(organization.logo, "200x50") }}" alt="{{ organization.name }}">
     {% endif %}
     
     {% if organization.description %}{{ organization.description|linebreaks|typogrify|safe }}{% endif %}

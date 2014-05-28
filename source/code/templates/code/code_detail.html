@@ -21,7 +21,7 @@
 
         {% if code.screenshot %}
         <div class="image-inset-left-wrapper">
-            <img src="{{ MEDIA_URL }}{{ thumbnail(code.screenshot, "400") }}" alt="{{ code.name }}">
+            <img src="{{ thumbnail(code.screenshot, "400") }}" alt="{{ code.name }}">
         </div>
     {% endif %}
 

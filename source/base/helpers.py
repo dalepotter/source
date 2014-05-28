@@ -13,6 +13,7 @@ from django.utils.timesince import timesince
 from jingo import register
 from jinja2 import Markup
 from sorl.thumbnail import get_thumbnail
+from urlparse import urlparse
 from typogrify.filters import typogrify as dj_typogrify,\
     smartypants as dj_smartypants
 
@@ -55,22 +56,29 @@ def thumbnail(source, *args, **kwargs):
 
     # Templates should never return an exception
     try:
-        if not source.path:
-            source = kwargs.get('default')
+        # We set path either from the filesystem or from a url
+        if hasattr(source, 'path'):
+            if not source.path:
+                source = kwargs.get('default')
+            path = source.path
+        elif hasattr(source, 'url'):
+            path = urlparse(source.url).path
+        else:
+            raise NotImplementedError('Unknown storage backend')
 
         # Handle PNG images a little more gracefully
         # Make sure thumbnail call doesn't specifically set format
         if not 'format' in kwargs:
-            filetype = source.path.split('.')[-1]
+            filetype = path.split('.')[-1]
             # If we have a PNG, don't default convert to JPG
             if filetype.lower() == 'png':
                 kwargs['format'] = 'PNG'
-        
-        return get_thumbnail(source, *args, **kwargs)
+
+        return get_thumbnail(source, *args, **kwargs).url
     except Exception as e:
         logger.error('Thumbnail had Exception: %s' % (e,))
         source = getattr(settings, 'DEFAULT_IMAGE_SRC')
-        return get_thumbnail(source, *args, **kwargs)
+        return get_thumbnail(source, *args, **kwargs).url
 
 @register.filter
 def dj_intcomma(value):
