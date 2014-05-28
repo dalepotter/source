@@ -119,4 +119,4 @@ if env.get('AWS_STORAGE_BUCKET_NAME', None):
     STATICFILES_STORAGE = 'source.s3utils.StaticRootS3BotoStorage'
 
 COMPRESS_ENABLED = False
-
+COMPRESS_URL = STATIC_URL
