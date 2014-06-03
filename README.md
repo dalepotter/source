@@ -1,7 +1,7 @@
-source
+Open Dev Toolkit
 ======
 
-Source is a website [dedicated to][sinker-explain] "advocating for, shining a spotlight on, and helping to generate community around the code that's being written in journalism." It's built with [Django][django], using Mozilla's [Playdoh web app template][gh-playdoh].
+The Open Development Toolkit is a site bringing together tools and training around development data. It's been forked from [Source](http://source.opennews.org), which has been built with [Django][django], using Mozilla's [Playdoh web app template][gh-playdoh]
 
 [sinker-explain]: http://sinker.tumblr.com/post/12203160394/journalism-in-the-open-hard-coding-community
 [django]: http://www.djangoproject.com/
