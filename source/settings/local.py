@@ -42,11 +42,11 @@ GITHUB_CLIENT_SECRET = env.get("GITHUB_CLIENT_SECRET","batmansecret")
 
 # Debugging displays nice error messages, but leaks memory. Set this to False
 # on all server instances and True only for development.
-DEBUG = TEMPLATE_DEBUG = True
+DEBUG = TEMPLATE_DEBUG = env.get('DEBUG', 'true').lower() == 'true'
 
 # Is this a development instance? Set this to True on development/master
 # instances and False on stage/prod.
-DEV = True
+DEV = env.get('DEBUG', 'true').lower() == 'true'
 
 # # Playdoh ships with sha512 password hashing by default. Bcrypt+HMAC is safer,
 # # so it is recommended. Please read <https://github.com/fwenzel/django-sha2#readme>,
@@ -95,8 +95,7 @@ SECRET_KEY = env.get("SECRET_KEY", "batman")
 # Should robots.txt allow web crawlers?  Set this to True for production
 ENGAGE_ROBOTS = True
 
-if DEV:
-    SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
 
 # Files stored here with s3 configs:
 
