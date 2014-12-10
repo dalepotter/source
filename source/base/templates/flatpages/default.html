@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block page_title %}{{ flatpage.title }} - {{ super() }}{% endblock %}
 
+{% markdown %}
 {% block content %}
 <h2>{{ flatpage.title|typogrify }}</h2>
 {{ flatpage.content|markdown }}
 {% endblock content %}
+{% endmarkdown %}
