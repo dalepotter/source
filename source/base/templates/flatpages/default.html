@@ -3,5 +3,5 @@
 
 {% block content %}
 <h2>{{ flatpage.title|typogrify }}</h2>
-{{ flatpage.content|linebreaks|typogrify|safe|markdown }}
+{{ flatpage.content|linebreaks|typogrify|markdown }}
 {% endblock content %}
